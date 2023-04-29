@@ -232,7 +232,7 @@
          const message = document.getElementById("message").value
 
          if (name && email && phone && message) {
-            let res = await fetch(`https://mailer-interior.netlify.app/.netlify/functions/api/email?name=${name}&email=${email}&number=${number}&message=${message}`, {
+            let res = await fetch(`https://mailer-interior.netlify.app/.netlify/functions/api/email?name=${name}&email=${email}&number=${phone}&message=${message}`, {
                method: "GET",
             }).then(res=>res.json())
             alert(res)
