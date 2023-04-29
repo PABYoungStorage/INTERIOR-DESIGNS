@@ -87,6 +87,7 @@
          <div class="row">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                <form class="main_form">
+                  
                   <div class="row">
                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <input class="form-control" id="name" placeholder="Name" type="text" name="name" required>
@@ -106,6 +107,8 @@
                      <input type="hidden" name="_next" value="https://karthi-interior-design.netlify.app?mail=true">
                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <button class="send" type="button" onclick="SendMail()" id="send">Send</button>
+                     </div>
+                     <div class="res-center" id="mail-msg">
                      </div>
                   </div>
                </form>
@@ -226,16 +229,18 @@
    <script>
       
       async function SendMail(e) {
-         const name = document.getElementById("name").value
-         const email = document.getElementById("email").value
-         const phone = document.getElementById("phone").value
-         const message = document.getElementById("message").value
+         let name = document.getElementById("name").value
+         let email = document.getElementById("email").value
+         let phone = document.getElementById("phone").value
+         let message = document.getElementById("message").value
 
          if (name && email && phone && message) {
+            document.getElementById("mail-msg").innerHTML = "your responce sending...."
             let res = await fetch(`https://mailer-interior.netlify.app/.netlify/functions/api/email?name=${name}&email=${email}&number=${phone}&message=${message}`, {
                method: "GET",
-            }).then(res=>res)
-            alert(res)
+            }).then(res=>res.json())
+            alert(res.message)
+            window.location.replace("/")
          } else {
             alert("please enter the below fields")
          }

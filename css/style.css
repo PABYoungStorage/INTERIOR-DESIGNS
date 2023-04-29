@@ -985,3 +985,12 @@ ul.re_post li {
      font-size: 21px;
  }
 /** end contact **/
+
+.res-center{
+     text-align: center;
+     width: 100%;
+     margin-top: 10px;
+     font-weight: 600;
+     text-transform: capitalize;
+     color: #000;
+}
